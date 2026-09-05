@@ -1,5 +1,6 @@
 #include "skocko.h"
 #include "sh1106.h"
+#include "uart.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <time.h>
@@ -40,6 +41,17 @@ void GuessReset() {
     position = 0;
 
     return;
+}
+
+void UartPrint() {
+    int i;
+    UART_SendString("Result: ");
+
+    for (i=0; i<4; i++) {
+        UART_SendChar(48 + res[i]);
+    }
+
+    UART_SendChar('\n');
 }
 
 static void DecArray() {
@@ -98,6 +110,7 @@ uint8_t GuessCheck() {
     }
     */
     DecArray();
+    UartPrint();
     for (i=0; i<4; i++) {
         if (res[i] != 2) return 0;
     }
