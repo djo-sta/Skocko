@@ -12,7 +12,7 @@ submits a guess and then receives a result which is presented as 4 circles that
 can be:
   1. full (you guessed the right sign at the right spot)
   2. half-full (you guessed the right sign, but missed its spot)
-  3. epty (you missed the sign)
+  3. empty (you missed the sign)
 
 Circles do not correspond to signs in their place (1st circle doesn't represent
 the result of a 1st sign).
@@ -92,7 +92,8 @@ to my ESP32 and are placed in sh1106.c file.
 There was a specific task: a project needed a piece of its code to be written in
 Assembly, so I decided that it should be a part that compares my guess to the winning
 combination and named it GuessCheckAsm. The assembly code was made to imitate the part 
-of code commented out in ckocko.c file, GuessCheck() function part.
+of the code commented out in ckocko.c file, GuessCheck() function part.
 
 
-
+No functional code was written by **AI**, only time it was used is for making sign bitmaps
+(and even that I needed to fix by hand unfortunatly).
