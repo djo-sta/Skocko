@@ -48,8 +48,17 @@ void InitHardware() {
     TB0CTL |= TBSSEL__ACLK + ID__8 + MC__UP;
     
     // -------------------------
-    // Timer
+    // UART
     // -------------------------
+    P4SEL |= BIT4 | BIT5;
 
+    UCA1CTL1 |= UCSWRST;
+
+    UCA1CTL0 = 0;
+    UCA1CTL1 |= UCSSEL__SMCLK;
+    UCA1BRW = BR_38400;
+    UCA1MCTL |= BRS_38400 + UCBRF_0;
+
+    UCA1CTL1 &= ~UCSWRST;
     return;
 }
